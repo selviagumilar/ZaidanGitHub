@@ -1,0 +1,193 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package todolist;
+import java.util.Scanner ;
+
+/**
+ *
+ * @author FTI UNSAP
+ */
+public class Todolsit {
+
+    /**
+     * @zaidan ikhsan gumilar args the command line arguments
+     */
+    public static String[]model = new String[10] ;
+    
+    
+    public static void main(String[] args) {
+    //testshowtodolist();
+    
+    //testremovetodolist();
+    
+    //testinput();
+    
+    viewshowtodolist();
+    }
+    
+    public static void showtablelist() {
+    
+    }
+    
+    public static void todolist() {
+    
+    }
+    
+   
+    
+    public static void showtodolist() {
+    for(int i = 0 ; i < model.length ; i++){
+         String todo = model[i];
+         int no = i + 1 ;
+         
+         if(todo != null){
+            System.out.println(no+" . "+ todo);
+            }
+        }
+    }
+    
+    public static void testshowtodolist() {
+     for (int i = 0 ; i < 25 ; i++){
+         addtodolist("Contoh todo: ke-"+ i );
+        }
+        showtodolist();
+    }
+    
+    public static void addtodolist(String todo) {
+        boolean isFull = true ;
+        for (int i = 0 ; i < model.length; i++){
+        if (model[i] == null){
+            isFull = false ;
+            break;
+            }
+        }
+        if (isFull) {
+            String[] temp = model ;
+            model = new String[model.length * 2];
+            
+            for (int i = 0 ; i < temp.length ; i++){
+                model[i] = temp[i];
+                }
+            } 
+        for ( int i = 0 ; i < model.length ; i++){
+        if (model[i] == null){
+            model[i] = todo ;
+            break;
+            }
+        }
+    }
+    
+    public static boolean removetodolist(Integer number ) {
+        if ((number -1) >= model.length){
+            return false;
+        } else if(model[number - 1] == null){
+            return false;
+            }else{
+                for (int i = (number - 1); i < model.length ; i++){
+                    if (i == (model.length - 1)){
+                    model[i] = null ;
+                    }else {
+                    model[i] = model[i + 1];
+                    }
+                }
+                }
+            
+        return true;
+    }
+    
+    public static void testremovetodolist(){
+        addtodolist("Satu");
+        addtodolist("dua");
+        addtodolist("tiga");
+        addtodolist("empat");
+        addtodolist("lima");
+        
+        boolean result = removetodolist(20);
+        System.out.println(result);
+        
+        result = removetodolist(7);
+        System.out.println(result);
+        
+        result = removetodolist(2);
+        System.out.println(result);
+        
+        showtodolist();
+    }
+    
+    public static String input(String info){
+    System.out.println(info + " : ");
+    
+    Scanner scanner = new Scanner(System.in);
+    String data = scanner.nextLine();
+    return data;
+    }
+    
+     public static void testinput(){
+        String name = input ("Nama");
+        System.out.println("Hi " + name);
+        
+        String channel = input ("Channel");
+        System.out.println(channel);
+    }
+     
+    public static void viewshowtodolist() {
+        System.out.println("MENU : ");
+        System.out.println("1. Tambah");
+        System.out.println("2. Hapus");
+        System.out.println("3. Lihat todolist ");
+        System.out.println("4. Keluar");
+        
+        String input = input("pilih");
+        if(input.equals("1")){
+        viewaddtodolist();
+        }else if (input.equals("2")){
+        viewremovetodolist();
+        }else if (input.equals("3")){
+        }else if (input.equals("x")){
+        }else{
+        System.out.println("Pilihan tidak ditemukan");
+        }
+        
+    }
+    public static void testviewtodolist(){
+        addtodolist("Satu");
+        addtodolist("dua");
+        addtodolist("tiga");
+        addtodolist("empat");
+        addtodolist("lima");
+        viewshowtodolist();
+    }
+    
+    public static void viewaddtodolist() {
+        Scanner keyboard = new Scanner(System.in);
+        
+        String [] todolist = new String [1];
+        
+        
+        for(int i = 0 ; i < todolist.length; i++){
+        System.out.println("Tambahkan Sesuatau");
+        String liat = keyboard.nextLine();
+        }
+        
+        
+        
+        String input= input("Back 0");
+        if (input.equals("0")){
+        viewshowtodolist();
+        }
+        
+    }
+    
+//    public static void view(){
+//        viewaddtodolist lihatview = new viewaddtodolist();
+//        System.out.prinln(lihatview.)
+//    }
+    
+    public static void viewremovetodolist() {
+    }
+    
+    
+}
